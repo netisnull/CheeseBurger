@@ -3,19 +3,55 @@
 <head>
   <title>Chat App</title>
   <style>
-     body {
+    body {
       font-family: Arial, sans-serif;
       background-color: #36393f; /* Dark background */
       color: #ffffff; /* Light text */
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-family: "Discord", sans-serif;
+      background-color: #2f3136; /* Darker background */
+      border-bottom: 1px solid #484c52; /* Darker border */
+      width: 100vw;
+      box-sizing: border-box;
+    }
+
+    .header input {
+      padding: 10px;
+      border: 1px solid #484c52; /* Darker border */
+      border-radius: 5px;
+      background-color: #2f3136; /* Darker background */
+      color: #ffffff; /* Light text */
+    }
+
+    .header button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #7289da; /* Discord blue */
+      color: #ffffff; /* Light text */
+      cursor: pointer;
+    }
+
+    .header button:hover {
+      background-color: #5a68a5; /* Darker Discord blue */
     }
 
     .chat-container {
-      max-width: 400px;
+      max-width: 100%;
+      height: calc(100vh - 60px); /* Adjusted for header height */
       margin: 0 auto;
       padding: 20px;
       border: 1px solid #484c52; /* Darker border */
       border-radius: 10px;
       background-color: #2f3136; /* Darker background */
+      box-sizing: border-box;
     }
 
     .chat {
@@ -27,7 +63,7 @@
       color: #ffffff; /* Light text */
     }
 
-    .chat input {
+    .dark-input {
       width: calc(100% - 60px);
       padding: 10px;
       margin-right: 10px;
@@ -37,7 +73,7 @@
       color: #ffffff; /* Light text */
     }
 
-    .chat button {
+    .dark-button {
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
@@ -46,19 +82,21 @@
       cursor: pointer;
     }
 
-    .chat button:hover {
+    .dark-button:hover {
       background-color: #5a68a5; /* Darker Discord blue */
     }
   </style>
 </head>
 <body>
+  <div class="header">
+    <input id="name" placeholder="Enter your name" class="dark-input">
+    <button onclick="joinChat()" class="dark-button">Join Chat</button>
+  </div>
   <div class="chat-container">
-    <input id="name" placeholder="Enter your name">
-    <button onclick="joinChat()">Join Chat</button>
-    <div id="chat" class="chat" style="height: 200px; overflow-y: auto;"></div>
+    <div id="chat" class="chat" style="height: calc(100% - 80px); overflow-y: auto;"></div>
     <div class="chat">
-      <input id="message" placeholder="Type a message">
-      <button onclick="sendMessage()">Send</button>
+      <input id="message" placeholder="Type a message" class="dark-input">
+      <button onclick="sendMessage()" class="dark-button">Send</button>
     </div>
   </div>
 
